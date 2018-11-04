@@ -19,33 +19,35 @@ function draw() {
 	fill(255);
 	textAlign(CENTER);
 	textSize(35);
-	text(getTime(), width/2, 75);
-	textSize(25);
-	if(Date.now() - lastWeatherRequest >= weatherDelay){
-		getWeather();	    
-		lastWeatherRequest = Date.now();
-		getNews();
-	}
-	if(weather){
-		temperature = weather.main;
-		textSize(35)
-		text("Current Temp: " + temperature.temp + "°F", width/2, 25);
+	if(new Date().getHours() < 21 && new Date.getHours() > 6){
+		text(getTime(), width/2, 75);
 		textSize(25);
-		text(temperature.temp_min + "°F" + "/" + temperature.temp_max + "°F", width/2+275, 25);
-	}
-	if(wordDone){
-		word = "";
-		for(var i=0; i<search.length; i++){
-			word += search[i];
+		if(Date.now() - lastWeatherRequest >= weatherDelay){
+			getWeather();	    
+			lastWeatherRequest = Date.now();
+			getNews();
 		}
-		wordDone = false;
-		search = [];
-		getNews();
-	}
-	if(news){
-		text("News: ", width/2, height-100);
-		for(var i=1; i<4; i++){
-			text(news.getElementsByTagName("item")[i].getElementsByTagName("title")[0].innerHTML, width/2, height-(25*i));
+		if(weather){
+			temperature = weather.main;
+			textSize(35)
+			text("Current Temp: " + temperature.temp + "°F", width/2, 25);
+			textSize(25);
+			text(temperature.temp_min + "°F" + "/" + temperature.temp_max + "°F", width/2+275, 25);
+		}
+		if(wordDone){
+			word = "";
+			for(var i=0; i<search.length; i++){
+				word += search[i];
+			}
+			wordDone = false;
+			search = [];
+			getNews();
+		}
+		if(news){
+			text("News: ", width/2, height-100);
+			for(var i=1; i<4; i++){
+				text(news.getElementsByTagName("item")[i].getElementsByTagName("title")[0].innerHTML, width/2, height-(25*i));
+			}
 		}
 	}
 }
