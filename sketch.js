@@ -19,7 +19,8 @@ function draw() {
 	fill(255);
 	textAlign(CENTER);
 	textSize(35);
-	if(new Date().getHours() < 21 && new Date.getHours() > 6){
+	console.log((new Date()).getHours());
+	if((new Date()).getHours() < 21 && (new Date().getHours()) > 6){
 		text(getTime(), width/2, 75);
 		textSize(25);
 		if(Date.now() - lastWeatherRequest >= weatherDelay){
