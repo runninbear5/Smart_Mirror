@@ -19,7 +19,7 @@
   "dependencies": {
     "blynk-library": "^0.5.3",
     "body-parser": "^1.18.3",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "nodemon": "^2.0.2",
     "request": "*"
   },
